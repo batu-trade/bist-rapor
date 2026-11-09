@@ -8,18 +8,6 @@
     "trigger": "manual",
     "quality": "eksik",
     "headline": "Kapanış: BIST 100 11.712,67 (+%2,00), 59 yükselen / 12 düşen."
-   },
-   "premarket": {
-    "status": "missed",
-    "note": "09:45 raporu zamanında üretilemedi (bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir."
-   },
-   "opening": {
-    "status": "missed",
-    "note": "10:15 raporu zamanında üretilemedi (bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir."
-   },
-   "midday": {
-    "status": "missed",
-    "note": "14:00 raporu zamanında üretilemedi (bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir."
    }
   }
  },
@@ -55,13 +43,12 @@
  ],
  "days": {},
  "last_run": {
-  "at": "2026-11-09T21:34:22+03:00",
+  "at": "2026-11-09T21:38:06+03:00",
   "trigger": "manual",
-  "slots": [
-   "close"
-  ],
+  "slots": [],
   "failed": [],
-  "requests": 283,
-  "fetch_failures": 8
- }
+  "requests": 0,
+  "fetch_failures": 0
+ },
+ "installed_at": "2026-11-09T21:33:33+03:00"
 }
