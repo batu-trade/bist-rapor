@@ -1,0 +1,44 @@
+{
+ "version": 1,
+ "note": "SİMÜLASYON — gerçek işlem değildir",
+ "capital": {
+  "intraday": 10000.0,
+  "swing": 20000.0
+ },
+ "open": [
+  {
+   "id": 1,
+   "book": "swing",
+   "ticker": "HALKB",
+   "strategy": "Yükselen trendde geri çekilme",
+   "entry_time": "2026-11-09T21:33:33.909779+03:00",
+   "entry": 42.9029,
+   "shares": 20,
+   "remaining": 20,
+   "stop": 38.28,
+   "stop_initial": 38.28,
+   "t1": 49.99,
+   "t2": 55.85,
+   "risk_amount": 93.74,
+   "entry_commission": 1.29,
+   "exits": [],
+   "t1_done": false
+  }
+ ],
+ "closed": [],
+ "equity": {
+  "intraday": [
+   {
+    "date": "2026-11-09",
+    "equity": 10000.0
+   }
+  ],
+  "swing": [
+   {
+    "date": "2026-11-09",
+    "equity": 19999.14
+   }
+  ]
+ },
+ "next_id": 2
+}

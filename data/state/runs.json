@@ -1,0 +1,67 @@
+{
+ "reports": {
+  "2026-11-09": {
+   "close": {
+    "status": "ok",
+    "generated_at": "2026-11-09T21:33:33+03:00",
+    "delay_minutes": 199,
+    "trigger": "manual",
+    "quality": "eksik",
+    "headline": "Kapanış: BIST 100 11.712,67 (+%2,00), 59 yükselen / 12 düşen."
+   },
+   "premarket": {
+    "status": "missed",
+    "note": "09:45 raporu zamanında üretilemedi (bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir."
+   },
+   "opening": {
+    "status": "missed",
+    "note": "10:15 raporu zamanında üretilemedi (bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir."
+   },
+   "midday": {
+    "status": "missed",
+    "note": "14:00 raporu zamanında üretilemedi (bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir."
+   }
+  }
+ },
+ "log": [
+  {
+   "ts": "2026-11-09T21:33:33+03:00",
+   "event": "report",
+   "slot": "close",
+   "status": "ok",
+   "message": "Kapanış Raporu üretildi (+199 dk, kalite: Eksik)"
+  },
+  {
+   "ts": "2026-11-09T21:34:22+03:00",
+   "event": "missed",
+   "slot": "premarket",
+   "status": "warning",
+   "message": "Rapor süresi içinde üretilemedi"
+  },
+  {
+   "ts": "2026-11-09T21:34:22+03:00",
+   "event": "missed",
+   "slot": "opening",
+   "status": "warning",
+   "message": "Rapor süresi içinde üretilemedi"
+  },
+  {
+   "ts": "2026-11-09T21:34:22+03:00",
+   "event": "missed",
+   "slot": "midday",
+   "status": "warning",
+   "message": "Rapor süresi içinde üretilemedi"
+  }
+ ],
+ "days": {},
+ "last_run": {
+  "at": "2026-11-09T21:34:22+03:00",
+  "trigger": "manual",
+  "slots": [
+   "close"
+  ],
+  "failed": [],
+  "requests": 283,
+  "fetch_failures": 8
+ }
+}
