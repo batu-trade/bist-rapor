@@ -1,0 +1,38 @@
+{
+  "_aciklama": "Borsa Istanbul pay piyasasi tatil ve yarim gun listesi. 2026 tarihleri Borsa Istanbul'un 04.12.2025 tarihli duyurusuna gore; 2027 tarihleri dini bayram takvimine gore TAHMINIDIR ve Borsa Istanbul 2027 duyurusu yayimlaninca kontrol edilmelidir. Sistem ayrica her gun endeks verisinin gelip gelmedigini kontrol eder; liste eksik olsa bile tatil gununde sahte rapor uretmez.",
+  "holidays": {
+    "2026-01-01": "Yılbaşı",
+    "2026-03-20": "Ramazan Bayramı",
+    "2026-04-23": "Ulusal Egemenlik ve Çocuk Bayramı",
+    "2026-05-01": "Emek ve Dayanışma Günü",
+    "2026-05-19": "Atatürk'ü Anma, Gençlik ve Spor Bayramı",
+    "2026-05-27": "Kurban Bayramı",
+    "2026-05-28": "Kurban Bayramı",
+    "2026-05-29": "Kurban Bayramı",
+    "2026-07-15": "Demokrasi ve Milli Birlik Günü",
+    "2026-10-29": "Cumhuriyet Bayramı",
+    "2027-01-01": "Yılbaşı",
+    "2027-03-09": "Ramazan Bayramı (tahmini)",
+    "2027-03-10": "Ramazan Bayramı (tahmini)",
+    "2027-03-11": "Ramazan Bayramı (tahmini)",
+    "2027-04-23": "Ulusal Egemenlik ve Çocuk Bayramı",
+    "2027-05-17": "Kurban Bayramı (tahmini)",
+    "2027-05-18": "Kurban Bayramı (tahmini)",
+    "2027-05-19": "Kurban Bayramı / 19 Mayıs (tahmini)",
+    "2027-07-15": "Demokrasi ve Milli Birlik Günü",
+    "2027-08-30": "Zafer Bayramı",
+    "2027-10-29": "Cumhuriyet Bayramı"
+  },
+  "half_days": {
+    "2026-03-19": "Ramazan Bayramı arifesi (yarım gün)",
+    "2026-05-26": "Kurban Bayramı arifesi (yarım gün)",
+    "2026-10-28": "Cumhuriyet Bayramı arifesi (yarım gün)",
+    "2027-03-08": "Ramazan Bayramı arifesi (yarım gün, tahmini)",
+    "2027-10-28": "Cumhuriyet Bayramı arifesi (yarım gün)"
+  },
+  "session": {
+    "open": "10:00",
+    "close": "18:00",
+    "half_day_close": "12:30"
+  }
+}

@@ -1,0 +1,8 @@
+# KİŞİSEL İZLEME LİSTENİZ
+# Her satıra bir hisse kodu yazın (".IS" eklemeyin). # ile başlayan satırlar dikkate alınmaz.
+# Bu listedeki hisseler her raporda ayrıca takip edilir.
+THYAO
+ASELS
+TUPRS
+BIMAS
+FROTO

@@ -1,0 +1,25 @@
+{
+  "_aciklama": "Elle guncellenen makro bilgiler. Ucretsiz ve anahtarsiz resmi bir API olmadigi icin politika faizi ve enflasyon burada tutulur. 'guncelleme' tarihi 45 gunden eskiyse raporlar uyari verir.",
+  "guncelleme": "2026-11-09",
+  "politika_faizi": {
+    "deger": null,
+    "not": "Değer bilinmiyorsa null bırakın; raporlar bu durumda faiz seviyesini yazmaz, yalnızca toplantı tarihini gösterir."
+  },
+  "yillik_tufe": {
+    "2022": 64.27,
+    "2023": 64.77,
+    "2024": 44.38,
+    "2025": 30.89
+  },
+  "son_aylik_tufe_yillik": {
+    "deger": null,
+    "donem": null,
+    "not": "TÜİK'in son açıkladığı yıllık TÜFE (%). Bilinmiyorsa null."
+  },
+  "ppk_toplantilari": [
+    "2026-12-10",
+    "2027-01-21"
+  ],
+  "ppk_not": "2026 tarihleri TCMB'nin açıkladığı takvime göredir. 2027 tarihleri TCMB 2027 takvimiyle kontrol edilmelidir.",
+  "tufe_aciklama_kurali": "TÜİK, TÜFE'yi her ayın 3'ünde saat 10:00'da açıklar; 3'ü hafta sonuna denk gelirse ilk iş günü açıklanır."
+}

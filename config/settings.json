@@ -1,0 +1,72 @@
+{
+  "_aciklama": "Ayarlar. Yuzdeler yuzde cinsindendir (0.5 = %0,5). Gercek para miktarlarinizi buraya YAZMAYIN: bu depo herkese acik olabilir. Gercek portfoyunuzu sitedeki 'Portfoyum' sekmesine girin; o bilgiler yalnizca telefonunuzda saklanir.",
+  "paper_capital_tl": 100000,
+  "capital_split_pct": {
+    "uzun_vade": 50,
+    "swing": 20,
+    "gun_ici": 10,
+    "nakit_rezerv": 20
+  },
+  "risk": {
+    "risk_per_trade_pct": 0.5,
+    "max_daily_loss_pct": 1.5,
+    "commission_pct": 0.15,
+    "slippage_pct": 0.10,
+    "max_position_pct": 25,
+    "max_adv_participation_pct": 1.0
+  },
+  "liquidity_tl": {
+    "high": 500000000,
+    "medium": 100000000
+  },
+  "intraday": {
+    "min_rr": 1.5,
+    "max_signals": 5,
+    "auto_paper": true,
+    "max_paper_per_day": 2,
+    "min_bars": 3
+  },
+  "swing": {
+    "min_rr": 1.8,
+    "max_candidates": 8,
+    "auto_paper": true,
+    "max_open": 5,
+    "max_hold_days": 20
+  },
+  "fundamentals": {
+    "refresh_days": 7,
+    "refresh_per_run": 40
+  },
+  "network": {
+    "workers": 6,
+    "min_interval_sec": 0.15,
+    "timeout_sec": 20
+  },
+  "global_markets": [
+    ["^GSPC", "S&P 500 (ABD)"],
+    ["^IXIC", "Nasdaq (ABD)"],
+    ["ES=F", "S&P 500 vadeli"],
+    ["^GDAXI", "DAX (Almanya)"],
+    ["^FTSE", "FTSE 100 (İngiltere)"],
+    ["^N225", "Nikkei (Japonya)"],
+    ["^HSI", "Hang Seng (Hong Kong)"],
+    ["^VIX", "VIX (ABD korku endeksi)"],
+    ["USDTRY=X", "Dolar/TL"],
+    ["EURTRY=X", "Euro/TL"],
+    ["BZ=F", "Brent petrol"],
+    ["GC=F", "Altın (ons, $)"],
+    ["^TNX", "ABD 10 yıllık faiz"]
+  ],
+  "news_queries": [
+    "KAP özel durum açıklaması",
+    "KAP temettü",
+    "KAP pay geri alım",
+    "KAP bedelsiz sermaye artırımı",
+    "KAP yeni iş ilişkisi sözleşme",
+    "Borsa İstanbul hisse",
+    "TCMB faiz kararı",
+    "TÜİK enflasyon"
+  ],
+  "news_per_ticker_watchlist": true,
+  "report_keep_days": 400
+}
