@@ -64,7 +64,7 @@ def validate(series, is_index: bool = False) -> list[str]:
 
 
 def assess_intraday(series, now: dt.datetime, session_open: dt.datetime, session_close: dt.datetime,
-                    min_bars: int = 3) -> tuple[str, str, float | None]:
+                    min_bars: int = 3, check_volume: bool = True) -> tuple[str, str, float | None]:
     """(kalite, açıklama, gecikme_dk)."""
     if not series.ok:
         return UNAVAILABLE, f"Gün içi veri alınamadı ({series.error or 'boş'})", None
@@ -92,7 +92,7 @@ def assess_intraday(series, now: dt.datetime, session_open: dt.datetime, session
         q, note = STALE, f"Veri çok eski ({fmt.num(age, 0)} dk)"
     if q in (RELIABLE, DELAYED) and len(today) < min_bars:
         q, note = INCOMPLETE, f"Bugün yalnızca {len(today)} mum var (en az {min_bars} gerekli)"
-    if q in (RELIABLE, DELAYED) and len(today) >= 4 and mv / len(today) > 0.5:
+    if check_volume and q in (RELIABLE, DELAYED) and len(today) >= 4 and mv / len(today) > 0.5:
         q, note = INCOMPLETE, "Hacim verisinin çoğu eksik"
     return q, note, age if not after_close else None
 

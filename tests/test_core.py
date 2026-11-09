@@ -217,3 +217,13 @@ def test_quality_daily_stale_and_jump():
     assert probs and "sıçrama" in probs[0]
     q, _ = Q.assess_daily(s, dt.datetime(2026, 6, 1, 12, tzinfo=IST), dt.date(2026, 6, 1), None, None)
     assert q == Q.STALE
+
+
+def test_quality_index_without_volume():
+    day = dt.date(2026, 11, 10)
+    o, c = CAL.session(day)
+    s = _series([o + dt.timedelta(minutes=5 * i) for i in range(30)])
+    s.v = [0] * len(s.v)
+    now = dt.datetime(2026, 11, 10, 12, 45, tzinfo=IST)
+    assert Q.assess_intraday(s, now, o, c)[0] == Q.INCOMPLETE          # hisse: hacim yok = eksik
+    assert Q.assess_intraday(s, now, o, c, check_volume=False)[0] == Q.DELAYED  # endeks: hacim beklenmez

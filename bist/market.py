@@ -67,7 +67,7 @@ def index_overview(code: str, name: str, daily, intra, ctx) -> dict:
         out["sr"] = {k: [r(x) for x in v] for k, v in ind.support_resistance(hh, ll, cl, price).items()}
         out["last_close_date"] = comp.dates()[-1].isoformat()
     if intra is not None:
-        iq, inote, age = Q.assess_intraday(intra, ctx.now, o_s, c_s, min_bars=2)
+        iq, inote, age = Q.assess_intraday(intra, ctx.now, o_s, c_s, min_bars=2, check_volume=False)  # endekslerde hacim yok
         out.update({"intra_quality": iq, "intra_note": inote, "delay_min": r(age, 0)})
         today = intra.only_date(ctx.today)
         if len(today):

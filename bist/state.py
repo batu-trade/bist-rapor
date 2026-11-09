@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import datetime as dt
 
-from .tz import SLOT_ORDER, SLOTS, slot_deadline, slot_time
+from .tz import SLOT_ORDER, SLOTS, now_ist, slot_deadline, slot_time
 from .util import load_json, save_json
 
 MAX_LOG = 400
@@ -14,6 +14,9 @@ class State:
         self.path = data_dir / "state" / "runs.json"
         self.data = load_json(self.path, None) or {"reports": {}, "log": [], "days": {}}
         self.data.setdefault("days", {})
+        if "installed_at" not in self.data:
+            first = self.data["log"][0]["ts"] if self.data["log"] else None
+            self.data["installed_at"] = first or now_ist().isoformat(timespec="seconds")
 
     def save(self):
         self.data["log"] = self.data["log"][-MAX_LOG:]
@@ -50,8 +53,15 @@ class State:
             return []
         day = now.date()
         missed = []
+        installed = dt.datetime.fromisoformat(self.data["installed_at"])
         for s in SLOT_ORDER:
-            if now > slot_deadline(day, s) and not self.entry(day, s):
+            e = self.entry(day, s)
+            if slot_time(day, s) < installed:
+                # Sistem kurulmadan önceki saatler "kaçırıldı" sayılmaz
+                if e and e.get("status") == "missed":
+                    del self.data["reports"][day.isoformat()][s]
+                continue
+            if now > slot_deadline(day, s) and not e:
                 self.mark(day, s, "missed", note=f"{SLOTS[s]['short']} raporu zamanında üretilemedi "
                                                 f"(bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir.")
                 self.log(now, "missed", s, "warning", "Rapor süresi içinde üretilemedi")

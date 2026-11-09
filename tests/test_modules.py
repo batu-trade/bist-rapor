@@ -30,6 +30,7 @@ def test_due_and_wait(tmp_path):
 
 def test_missed_marking(tmp_path):
     st = State(tmp_path)
+    st.data["installed_at"] = "2026-01-01T00:00:00+03:00"
     now = dt.datetime(2026, 11, 10, 14, 30, tzinfo=IST)
     st.mark(dt.date(2026, 11, 10), "opening", "ok")
     missed = st.mark_missed(now, True)
@@ -134,3 +135,13 @@ def test_classification_sector_relative():
     assert out["E"] == "İzlemeye değer"  # tek şirketli sektör: kıyas yok, ucuz diye önerilmez
     loss = F.classify_all([_m("L", "X", None, 1, ni=-5)])[0]
     assert loss["class"] == "Temelleri zayıflıyor"
+
+
+def test_no_missed_before_installation(tmp_path):
+    st = State(tmp_path)
+    st.data["installed_at"] = "2026-11-10T12:00:00+03:00"
+    st.mark(dt.date(2026, 11, 10), "opening", "missed")
+    missed = st.mark_missed(dt.datetime(2026, 11, 10, 18, 0, tzinfo=IST), True)
+    assert missed == ["midday"]                      # yalnızca kurulumdan sonraki rapor
+    assert st.entry(dt.date(2026, 11, 10), "opening") is None
+    assert st.entry(dt.date(2026, 11, 10), "premarket") is None
