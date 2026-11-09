@@ -1,0 +1,64 @@
+name: Kod paketi kurulumu
+
+# setup/bundle.b64 dosyası yüklendiğinde çalışır: paketi açar, testleri koşar,
+# testler geçerse kodu kaydeder ve siteyi yeniden yayınlar. Testler geçmezse
+# hiçbir şey değişmez (mevcut çalışan sistem bozulmaz).
+on:
+  push:
+    paths: ["setup/bundle.b64"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: bist-reports
+  cancel-in-progress: false
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Paketi aç
+        id: unpack
+        run: |
+          if [ ! -f setup/bundle.b64 ]; then echo "Paket yok"; echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+          mkdir -p /tmp/b
+          base64 -d setup/bundle.b64 > /tmp/bundle.tgz
+          tar -xzf /tmp/bundle.tgz -C /tmp/b
+          # Kullanıcının düzenlediği izleme listesini koru
+          if [ -f config/watchlist.txt ]; then rm -f /tmp/b/config/watchlist.txt; fi
+          rm -rf /tmp/b/.github /tmp/b/data
+          cp -a /tmp/b/. .
+          git rm -q setup/bundle.b64
+
+      - name: Testler
+        if: steps.unpack.outputs.skip != 'true'
+        run: |
+          pip install -q pytest
+          python -m pytest -q
+
+      - name: Kaydet
+        if: steps.unpack.outputs.skip != 'true'
+        run: |
+          git config user.name "bist-rapor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Kod paketi kuruldu" || exit 0
+          for i in 1 2 3; do git push -q && break; git pull --rebase -q; sleep 5; done
+
+      - name: Siteyi yeniden yayınla
+        if: steps.unpack.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run reports.yml -f slot=site
