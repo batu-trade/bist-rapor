@@ -1,0 +1,104 @@
+name: BIST raporları
+
+# Saatler UTC'dir (İstanbul = UTC+3, yaz/kış saati yok).
+# GitHub zamanlanmış görevleri birkaç dakika (bazen daha fazla) geciktirebilir veya atlayabilir.
+# Bu yüzden her rapor için ERKEN tetiklenir, rapor saatine kadar beklenir; sonraki satırlar
+# gecikme/atlama durumunda kurtarma içindir. Aynı rapor iki kez üretilmez.
+on:
+  schedule:
+    - cron: "20 6 * * 1-5"   # 09:20 -> 09:45 açılış öncesi
+    - cron: "48 6 * * 1-5"   # 09:48 -> 10:15 açılış sonrası (+ 09:45 kurtarma)
+    - cron: "33 7 * * 1-5"   # 10:33 kurtarma
+    - cron: "27 10 * * 1-5"  # 13:27 -> 14:00 gün ortası
+    - cron: "17 11 * * 1-5"  # 14:17 kurtarma
+    - cron: "43 14 * * 1-5"  # 17:43 -> 18:15 kapanış
+    - cron: "37 15 * * 1-5"  # 18:37 kurtarma
+    - cron: "23 17 * * 1-5"  # 20:23 kurtarma
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Hangi rapor? (auto = saatine göre olanı üretir, site = yalnızca siteyi yeniler)"
+        type: choice
+        default: auto
+        options: [auto, premarket, opening, midday, close, site]
+      force:
+        description: "Bugün zaten üretildiyse yine de yeniden üret"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: bist-reports
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Plan (rapor saatine kadar beklenecek süre)
+        id: plan
+        run: python -m bist plan --event "${{ github.event_name }}" --slot "${{ inputs.slot || 'auto' }}"
+
+      - name: Rapor saatini bekle
+        if: steps.plan.outputs.wait != '0'
+        run: sleep ${{ steps.plan.outputs.wait }}
+
+      - name: Güncel durumu çek
+        run: git pull --ff-only || true
+
+      - name: Rapor üret
+        id: run
+        if: inputs.slot != 'site'
+        continue-on-error: true
+        run: |
+          SLOT="${{ inputs.slot || 'auto' }}"
+          TRIG="${{ github.event_name == 'workflow_dispatch' && 'manual' || 'schedule' }}"
+          ARGS="--slot $SLOT --trigger $TRIG"
+          if [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          python -m bist run $ARGS
+
+      - name: Sonuçları kaydet
+        if: always()
+        run: |
+          git config user.name "bist-rapor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then echo "Kaydedilecek değişiklik yok"; exit 0; fi
+          git commit -q -m "Rapor verisi: $(TZ=Europe/Istanbul date '+%Y-%m-%d %H:%M')"
+          for i in 1 2 3 4 5; do git push -q && break; git pull --rebase -q; sleep 5; done
+
+      - name: Siteyi oluştur
+        id: site
+        if: always() && (steps.run.outputs.changed == 'true' || github.event_name == 'workflow_dispatch')
+        run: python -m bist site --out _site
+
+      - name: Siteyi yükle
+        if: always() && steps.site.outcome == 'success'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Siteyi yayınla
+        if: always() && steps.site.outcome == 'success'
+        uses: actions/deploy-pages@v4
+
+      - name: Rapor hatası varsa çalışmayı başarısız işaretle (GitHub e-posta bildirimi gönderir)
+        if: steps.run.outcome == 'failure'
+        run: |
+          echo "Rapor üretiminde hata oluştu. Ayrıntılar 'Rapor üret' adımında."
+          exit 1
