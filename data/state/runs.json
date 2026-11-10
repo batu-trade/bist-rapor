@@ -71,14 +71,12 @@
  ],
  "days": {},
  "last_run": {
-  "at": "2026-11-10T10:34:58+03:00",
-  "trigger": "manual",
-  "slots": [
-   "opening"
-  ],
+  "at": "2026-11-10T10:36:05+03:00",
+  "trigger": "schedule",
+  "slots": [],
   "failed": [],
-  "requests": 203,
-  "fetch_failures": 8
+  "requests": 0,
+  "fetch_failures": 0
  },
  "installed_at": "2026-11-09T21:33:33+03:00"
 }
