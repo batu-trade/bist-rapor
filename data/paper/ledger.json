@@ -23,6 +23,24 @@
    "entry_commission": 1.29,
    "exits": [],
    "t1_done": false
+  },
+  {
+   "id": 2,
+   "book": "intraday",
+   "ticker": "ALARK",
+   "strategy": "Açılış aralığı kırılımı",
+   "entry_time": "2026-11-10T14:00:36+03:00",
+   "entry": 104.0039,
+   "shares": 23,
+   "remaining": 23,
+   "stop": 102.62,
+   "stop_initial": 102.62,
+   "t1": 105.18,
+   "t2": 106.21,
+   "risk_amount": 35.42,
+   "entry_commission": 3.59,
+   "exits": [],
+   "t1_done": false
   }
  ],
  "closed": [],
@@ -40,5 +58,5 @@
    }
   ]
  },
- "next_id": 2
+ "next_id": 3
 }
