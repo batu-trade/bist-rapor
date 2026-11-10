@@ -9,6 +9,20 @@
     "quality": "eksik",
     "headline": "Kapanış: BIST 100 11.712,67 (+%2,00), 59 yükselen / 12 düşen."
    }
+  },
+  "2026-11-10": {
+   "opening": {
+    "status": "ok",
+    "generated_at": "2026-11-10T10:34:22+03:00",
+    "delay_minutes": 19,
+    "trigger": "manual",
+    "quality": "gecikmeli",
+    "headline": "Açılış sonrası: BIST 100 11.692,78 (−%0,17), 52 yükselen / 18 düşen."
+   },
+   "premarket": {
+    "status": "missed",
+    "note": "09:45 raporu zamanında üretilemedi (bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir."
+   }
   }
  },
  "log": [
@@ -39,16 +53,32 @@
    "slot": "midday",
    "status": "warning",
    "message": "Rapor süresi içinde üretilemedi"
+  },
+  {
+   "ts": "2026-11-10T10:34:22+03:00",
+   "event": "report",
+   "slot": "opening",
+   "status": "ok",
+   "message": "Açılış Sonrası Raporu üretildi (+19 dk, kalite: Gecikmeli)"
+  },
+  {
+   "ts": "2026-11-10T10:34:58+03:00",
+   "event": "missed",
+   "slot": "premarket",
+   "status": "warning",
+   "message": "Rapor süresi içinde üretilemedi"
   }
  ],
  "days": {},
  "last_run": {
-  "at": "2026-11-09T21:38:06+03:00",
+  "at": "2026-11-10T10:34:58+03:00",
   "trigger": "manual",
-  "slots": [],
+  "slots": [
+   "opening"
+  ],
   "failed": [],
-  "requests": 0,
-  "fetch_failures": 0
+  "requests": 203,
+  "fetch_failures": 8
  },
  "installed_at": "2026-11-09T21:33:33+03:00"
 }
