@@ -23,6 +23,24 @@
    "entry_commission": 1.29,
    "exits": [],
    "t1_done": false
+  },
+  {
+   "id": 3,
+   "book": "intraday",
+   "ticker": "AKBNK",
+   "strategy": "VWAP geri alımı",
+   "entry_time": "2026-11-12T10:27:45+03:00",
+   "entry": 71.4714,
+   "shares": 34,
+   "remaining": 34,
+   "stop": 71.03,
+   "stop_initial": 71.03,
+   "t1": 72.01,
+   "t2": 72.4,
+   "risk_amount": 18.65,
+   "entry_commission": 3.65,
+   "exits": [],
+   "t1_done": false
   }
  ],
  "closed": [
@@ -94,5 +112,5 @@
    }
   ]
  },
- "next_id": 3
+ "next_id": 4
 }
