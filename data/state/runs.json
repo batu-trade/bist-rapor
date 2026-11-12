@@ -82,6 +82,14 @@
    "premarket": {
     "status": "missed",
     "note": "09:45 raporu zamanında üretilemedi (bulut zamanlayıcısı gecikmiş/atlamış olabilir). Elle üretilebilir."
+   },
+   "midday": {
+    "status": "ok",
+    "generated_at": "2026-11-12T14:23:52+03:00",
+    "delay_minutes": 24,
+    "trigger": "manual",
+    "quality": "gecikmeli",
+    "headline": "Gün ortası: BIST 100 11.813,32 (+%1,26), yön: yukarı."
    }
   }
  },
@@ -183,16 +191,25 @@
    "slot": "premarket",
    "status": "warning",
    "message": "Rapor süresi içinde üretilemedi"
+  },
+  {
+   "ts": "2026-11-12T14:23:52+03:00",
+   "event": "report",
+   "slot": "midday",
+   "status": "ok",
+   "message": "Gün Ortası Raporu üretildi (+24 dk, kalite: Gecikmeli)"
   }
  ],
  "days": {},
  "last_run": {
-  "at": "2026-11-12T11:34:29+03:00",
-  "trigger": "schedule",
-  "slots": [],
+  "at": "2026-11-12T14:24:28+03:00",
+  "trigger": "manual",
+  "slots": [
+   "midday"
+  ],
   "failed": [],
-  "requests": 0,
-  "fetch_failures": 0
+  "requests": 203,
+  "fetch_failures": 8
  },
  "installed_at": "2026-11-09T21:33:33+03:00"
 }
