@@ -202,14 +202,12 @@
  ],
  "days": {},
  "last_run": {
-  "at": "2026-11-12T14:24:28+03:00",
-  "trigger": "manual",
-  "slots": [
-   "midday"
-  ],
+  "at": "2026-11-12T14:25:12+03:00",
+  "trigger": "schedule",
+  "slots": [],
   "failed": [],
-  "requests": 203,
-  "fetch_failures": 8
+  "requests": 0,
+  "fetch_failures": 0
  },
  "installed_at": "2026-11-09T21:33:33+03:00"
 }
