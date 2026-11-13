@@ -23,6 +23,24 @@
    "entry_commission": 1.29,
    "exits": [],
    "t1_done": false
+  },
+  {
+   "id": 4,
+   "book": "swing",
+   "ticker": "YKBNK",
+   "strategy": "Kırılım sonrası yeniden test",
+   "entry_time": "2026-11-13T18:27:21.325858+03:00",
+   "entry": 37.8178,
+   "shares": 43,
+   "remaining": 43,
+   "stop": 35.68,
+   "stop_initial": 35.68,
+   "t1": 40.73,
+   "t2": 43.25,
+   "risk_amount": 94.36,
+   "entry_commission": 2.44,
+   "exits": [],
+   "t1_done": false
   }
  ],
  "closed": [
@@ -111,6 +129,10 @@
    {
     "date": "2026-11-12",
     "equity": 9978.65
+   },
+   {
+    "date": "2026-11-13",
+    "equity": 9978.65
    }
   ],
   "swing": [
@@ -129,8 +151,12 @@
    {
     "date": "2026-11-12",
     "equity": 20004.34
+   },
+   {
+    "date": "2026-11-13",
+    "equity": 19982.32
    }
   ]
  },
- "next_id": 4
+ "next_id": 5
 }
