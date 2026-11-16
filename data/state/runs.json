@@ -150,6 +150,14 @@
     "trigger": "schedule",
     "quality": "gecikmeli",
     "headline": "Gün ortası: BIST 100 11.880,96 (+%0,32), yön: yatay."
+   },
+   "close": {
+    "status": "ok",
+    "generated_at": "2026-11-16T19:24:53+03:00",
+    "delay_minutes": 70,
+    "trigger": "schedule",
+    "quality": "guvenilir",
+    "headline": "Kapanış: BIST 100 11.841,81 (−%0,01), 22 yükselen / 46 düşen."
    }
   }
  },
@@ -314,16 +322,25 @@
    "slot": "midday",
    "status": "ok",
    "message": "Gün Ortası Raporu üretildi (+44 dk, kalite: Gecikmeli)"
+  },
+  {
+   "ts": "2026-11-16T19:24:53+03:00",
+   "event": "report",
+   "slot": "close",
+   "status": "ok",
+   "message": "Kapanış Raporu üretildi (+70 dk, kalite: Güvenilir)"
   }
  ],
  "days": {},
  "last_run": {
-  "at": "2026-11-16T15:23:16+03:00",
+  "at": "2026-11-16T19:25:32+03:00",
   "trigger": "schedule",
-  "slots": [],
+  "slots": [
+   "close"
+  ],
   "failed": [],
-  "requests": 0,
-  "fetch_failures": 0
+  "requests": 203,
+  "fetch_failures": 8
  },
  "installed_at": "2026-11-09T21:33:33+03:00"
 }
