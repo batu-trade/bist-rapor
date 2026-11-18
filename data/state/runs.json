@@ -434,14 +434,12 @@
  ],
  "days": {},
  "last_run": {
-  "at": "2026-11-18T14:25:07+03:00",
+  "at": "2026-11-18T15:10:33+03:00",
   "trigger": "schedule",
-  "slots": [
-   "midday"
-  ],
+  "slots": [],
   "failed": [],
-  "requests": 203,
-  "fetch_failures": 8
+  "requests": 0,
+  "fetch_failures": 0
  },
  "installed_at": "2026-11-09T21:33:33+03:00"
 }
