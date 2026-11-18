@@ -43,20 +43,20 @@
    "t1_done": false
   },
   {
-   "id": 5,
-   "book": "intraday",
-   "ticker": "THYAO",
-   "strategy": "Trend içi geri çekilme",
-   "entry_time": "2026-11-18T14:09:50+03:00",
-   "entry": 326.8265,
-   "shares": 7,
-   "remaining": 7,
-   "stop": 325.9,
-   "stop_initial": 325.9,
-   "t1": 327.14,
-   "t2": 327.63,
-   "risk_amount": 9.92,
-   "entry_commission": 3.43,
+   "id": 6,
+   "book": "swing",
+   "ticker": "GARAN",
+   "strategy": "Kırılım sonrası yeniden test",
+   "entry_time": "2026-11-18T18:38:13.322684+03:00",
+   "entry": 145.8457,
+   "shares": 12,
+   "remaining": 12,
+   "stop": 138.66,
+   "stop_initial": 138.66,
+   "t1": 157.08,
+   "t2": 166.29,
+   "risk_amount": 88.85,
+   "entry_commission": 2.63,
    "exits": [],
    "t1_done": false
   }
@@ -128,6 +128,43 @@
    "r_multiple": -1.32,
    "exit_time": "2026-11-12T11:10:00+03:00",
    "exit_reason": "stop"
+  },
+  {
+   "id": 5,
+   "book": "intraday",
+   "ticker": "THYAO",
+   "strategy": "Trend içi geri çekilme",
+   "entry_time": "2026-11-18T14:09:50+03:00",
+   "entry": 326.8265,
+   "shares": 7,
+   "remaining": 0,
+   "stop": 326.8265,
+   "stop_initial": 325.9,
+   "t1": 327.14,
+   "t2": 327.63,
+   "risk_amount": 9.92,
+   "entry_commission": 3.43,
+   "exits": [
+    {
+     "time": "2026-11-18T14:15:00+03:00",
+     "shares": 3,
+     "price": 326.8129,
+     "reason": "hedef 1",
+     "pnl": -2.98
+    },
+    {
+     "time": "2026-11-18T14:20:00+03:00",
+     "shares": 4,
+     "price": 326.4997,
+     "reason": "maliyette stop",
+     "pnl": -5.23
+    }
+   ],
+   "t1_done": true,
+   "pnl": -8.21,
+   "r_multiple": -0.83,
+   "exit_time": "2026-11-18T14:20:00+03:00",
+   "exit_reason": "maliyette stop"
   }
  ],
  "equity": {
@@ -159,6 +196,10 @@
    {
     "date": "2026-11-17",
     "equity": 9978.65
+   },
+   {
+    "date": "2026-11-18",
+    "equity": 9970.44
    }
   ],
   "swing": [
@@ -189,8 +230,12 @@
    {
     "date": "2026-11-17",
     "equity": 19927.06
+   },
+   {
+    "date": "2026-11-18",
+    "equity": 19863.99
    }
   ]
  },
- "next_id": 6
+ "next_id": 7
 }
