@@ -41,6 +41,24 @@
    "entry_commission": 2.44,
    "exits": [],
    "t1_done": false
+  },
+  {
+   "id": 5,
+   "book": "intraday",
+   "ticker": "THYAO",
+   "strategy": "Trend içi geri çekilme",
+   "entry_time": "2026-11-18T14:09:50+03:00",
+   "entry": 326.8265,
+   "shares": 7,
+   "remaining": 7,
+   "stop": 325.9,
+   "stop_initial": 325.9,
+   "t1": 327.14,
+   "t2": 327.63,
+   "risk_amount": 9.92,
+   "entry_commission": 3.43,
+   "exits": [],
+   "t1_done": false
   }
  ],
  "closed": [
@@ -174,5 +192,5 @@
    }
   ]
  },
- "next_id": 5
+ "next_id": 6
 }
