@@ -59,6 +59,24 @@
    "entry_commission": 2.63,
    "exits": [],
    "t1_done": false
+  },
+  {
+   "id": 7,
+   "book": "swing",
+   "ticker": "VAKBN",
+   "strategy": "Yükselen trendde geri çekilme",
+   "entry_time": "2026-11-20T18:37:40.056843+03:00",
+   "entry": 33.033,
+   "shares": 44,
+   "remaining": 44,
+   "stop": 30.95,
+   "stop_initial": 30.95,
+   "t1": 36.04,
+   "t2": 38.58,
+   "risk_amount": 93.83,
+   "entry_commission": 2.18,
+   "exits": [],
+   "t1_done": false
   }
  ],
  "closed": [
@@ -204,6 +222,10 @@
    {
     "date": "2026-11-19",
     "equity": 9970.44
+   },
+   {
+    "date": "2026-11-20",
+    "equity": 9970.44
    }
   ],
   "swing": [
@@ -242,8 +264,12 @@
    {
     "date": "2026-11-19",
     "equity": 19905.91
+   },
+   {
+    "date": "2026-11-20",
+    "equity": 19822.66
    }
   ]
  },
- "next_id": 7
+ "next_id": 8
 }
